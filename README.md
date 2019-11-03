@@ -1,7 +1,10 @@
  # Gympoint
  ## Backend da Aplicação
+Até o momento: Configuração do Sequelize
 
- #### Criação do container do Postgres 
+<hr/>
+
+ #### Criação do container do Postgres
 ```js
 sudo docker run --name gympoint -e POSTGRES_PASSWORD=docker -p 5434:5432 -d postgres:11
 ```
