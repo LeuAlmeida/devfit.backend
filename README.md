@@ -58,7 +58,7 @@ Agora você tem um usuário na sua base de dados, utilize esse usuário para tod
 - A autenticação deve ser feita utilizando JWT.
 - Realize a validação dos dados de entrada;
 
-#### [] 2. Cadastro de alunos
+#### [X] 2. Cadastro de alunos
 
 Permita que alunos sejam mantidos (cadastrados/atualizados) na aplicação utilizando nome, email, idade, peso e altura.
 
