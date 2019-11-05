@@ -9,7 +9,7 @@ Até o momento: Configuração do Sequelize
 sudo docker run --name gympoint -e POSTGRES_PASSWORD=docker -p 5434:5432 -d postgres:11
 ```
 
-#### [] 1. Autenticação
+#### [X] 1. Autenticação
 
 Permita que um usuário se autentique em sua aplicação utilizando e-mail e uma senha.
 
