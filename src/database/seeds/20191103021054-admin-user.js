@@ -12,6 +12,13 @@ module.exports = {
           created_at: new Date(),
           updated_at: new Date(),
         },
+        {
+          name: 'Leonardo Almeida',
+          email: 'leo@webid.net.br',
+          password_hash: bcrypt.hashSync('12346578', 8),
+          created_at: new Date(),
+          updated_at: new Date(),
+        }
       ],
       {}
     );
