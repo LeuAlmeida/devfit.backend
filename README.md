@@ -6,11 +6,19 @@
   Devfit | Backend :key:
 </h1>
 
+<h3>ToDo:</h3>
+
+[X] User authentication
+[!] User CRUD (Create and Update is up to date)
+[ ] More infos incoming...
+
 <hr/>
 
 <p align="center">
 :nail_care: Logo design by <a href="https://www.behance.net/lucasrvr" target="_blank">Lucas Ribeiro</a>
 </p>
+
+<hr/>
 
 <h4 align="center">
 <a href="http://linkedin.com/in/leonardoalmeida99">Connect me in LinkedIn</a> | <a href="http://behance.net/almeida99">See my Behance</a> | <a href="https://leunardo.dev">Click here to go to my CV</a>
