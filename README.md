@@ -8,8 +8,8 @@
 
 <h3>ToDo:</h3>
 
-[X] User authentication
-[!] User CRUD (Create and Update is up to date)
+[X] User authentication<br/>
+[!] User CRUD (Create and Update is up to date)<br/>
 [ ] More infos incoming...
 
 <hr/>
