@@ -2,7 +2,7 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('plans', {
       id: {
-        type: Sequelize.NUMBER,
+        type: Sequelize.INTEGER,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
@@ -12,7 +12,7 @@ module.exports = {
         allowNull: false,
       },
       duration: {
-        type: Sequelize.NUMBER,
+        type: Sequelize.INTEGER,
         allowNull: false,
       },
       created_at: {
