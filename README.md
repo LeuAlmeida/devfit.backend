@@ -15,6 +15,8 @@ Step 1:
 [ ] Plan Management **(Check after finish everything)**
 Allow the user to register student enrollment plans, the plan must have the following fields:
 
+Table `plans`
+
 * Title (Plan name)
 * Duration (Plan duration in months)
 * Price (Plan monthly price)
@@ -31,6 +33,8 @@ Step 2:
 
 [ ] Enrollment Management **(Check after finish everything)**
 Although the student is registered on the platform, this does not mean that the student has an active registration and can access the gym.
+
+Table `enrollments`
 
 * Student_id (Student reference)
 * Plan_id (Plan reference)
@@ -58,6 +62,8 @@ Step 1:
 
 [ ] Checkins **(Check after finish everything)**
 
+Table `checkins`
+
 When the student arrives at the gym, he / she performs a check-in only informing his / her registration ID (database ID); <br/>
 This check-in serves to monitor how many times the user has attended the gym during the week.
 
@@ -75,6 +81,9 @@ Create a route to list all checkins performed by a user based on their registrat
 
 Step 2:
 
+[ ] Requests for Assistance
+
+Table `help_orders`
 
 <hr/>
 
