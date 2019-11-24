@@ -13,6 +13,7 @@
 Step 1:
 
 [ ] Plan Management **(Check after finish everything)**
+
 Allow the user to register student enrollment plans, the plan must have the following fields:
 
 Table `plans`
@@ -24,7 +25,9 @@ Table `plans`
 * Updated_at
 
 [ ] Start: 1 Month plan (R$129)
+
 [ ] Gold: 3 Months plan (R$109)
+
 [ ] Diamond: 6 Months plan (R$89)
 
 [ ] CRUD to manage plans
@@ -54,6 +57,7 @@ Data de início informada: `23/05/2019` Plano selecionado: `Gold (3 meses)` Data
 When a student enrolls, they receive an email with details of their enrollment at the academy such as plan, end date, value, and a welcome message.
 
 [ ] CRUD to manage enrollments
+
 [ ] Increment auth middleware to this step
 
 <h4>Student functions</h4>
