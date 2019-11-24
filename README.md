@@ -54,6 +54,28 @@ When a student enrolls, they receive an email with details of their enrollment a
 
 <h4>Student functions</h4>
 
+Step 1:
+
+[ ] Checkins **(Check after finish everything)**
+
+When the student arrives at the gym, he / she performs a check-in only informing his / her registration ID (database ID); <br/>
+This check-in serves to monitor how many times the user has attended the gym during the week.
+
+* Student_id (Student reference)
+* Created_at
+* Updated_at
+
+The student can be only 5 checkins between a 7 days periods
+
+[ ] POST Route *(Example: https://gympoint.com/students/3/checkins)*
+
+Create a route to list all checkins performed by a user based on their registration ID;
+
+[ ] GET Route *(Example: https://gympoint.com/students/3/checkins)*
+
+Step 2:
+
+
 <hr/>
 
 <p align="center">
