@@ -8,9 +8,22 @@
 
 <h3>ToDo:</h3>
 
-[X] User authentication<br/>
-[!] User CRUD (Create and Update is up to date)<br/>
-[ ] More infos incoming...
+Step 1:
+
+[ ] Plan Management **(Check after finish everything)**
+Allow the user to register student enrollment plans, the plan must have the following fields:
+
+* Title (Plan name)
+* Duration (Plan duration in months)
+* Price (Plan monthly price)
+* Created_at
+* Updated_at
+
+[ ] Start: 1 Month plan (R$129)
+[ ] Gold: 3 Months plan (R$109)
+[ ] Diamond: 6 Months plan (R$89)
+
+[ ] CRUD to manage plans
 
 <hr/>
 
