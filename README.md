@@ -25,6 +25,31 @@ Allow the user to register student enrollment plans, the plan must have the foll
 
 [ ] CRUD to manage plans
 
+Step 2:
+
+[ ] Enrollment Management **(Check after finish everything)**
+Although the student is registered on the platform, this does not mean that the student has an active registration and can access the gym.
+
+* Student_id (Student reference)
+* Plan_id (Plan reference)
+* Start_date (Enrollment start date)
+* End_date (Enrollment end date)
+* Price (Total price calculated in the enrollment start date)
+* Created_at
+* Updated_at
+
+The **registration start date** must be chosen by the user.
+
+The **end date** and **registration** price should be calculated based on the selected plan, for example: <br/>
+Data de início informada: `23/05/2019` Plano selecionado: `Gold (3 meses)` Data de término calculada: `23/08/2019 (3 meses depois do início)` Preço calculado: `R$327`
+
+[ ] Welcome e-mail when a student enrolls
+
+When a student enrolls, they receive an email with details of their enrollment at the academy such as plan, end date, value, and a welcome message.
+
+[ ] CRUD to manage enrollments
+[ ] Increment auth middleware to this step
+
 <hr/>
 
 <p align="center">
