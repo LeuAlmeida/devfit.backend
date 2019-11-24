@@ -24,11 +24,11 @@ Table `plans`
 * Created_at
 * Updated_at
 
-[ ] Start: 1 Month plan (R$129)
+[X] Start: 1 Month plan (R$129)
 
-[ ] Gold: 3 Months plan (R$109)
+[X] Gold: 3 Months plan (R$109)
 
-[ ] Diamond: 6 Months plan (R$89)
+[X] Diamond: 6 Months plan (R$89)
 
 [ ] CRUD to manage plans
 
