@@ -81,9 +81,26 @@ Create a route to list all checkins performed by a user based on their registrat
 
 Step 2:
 
-[ ] Requests for Assistance
+[ ] Requests for Assistance **(Check after finish everything)**
 
 Table `help_orders`
+
+* Student_id (Student reference only)
+* Question (Student request in text)
+* Answer (Gym answer in text)
+* Answer_at (Gym answer date)
+* Created_at
+* Updated_at
+
+[ ] Create a route to list all requests without answers
+
+[ ] Create a route for the student to apply for help just by entering their registration ID (database ID); (Example: `POST https://gympoint.com/students/3/help-orders`)
+
+[ ] Create a rout to list all requests from a single user (Example: `GET https://gympoint.com/students/3/help-orders`)
+
+[ ] Create a rout to the gym answer a request (Example: `POST https://gympoint.com/help-orders/1/answer`)
+
+[ ] Create a mail delivery to the student after a request be answered. This mail need to have the question and the answer.
 
 <hr/>
 
