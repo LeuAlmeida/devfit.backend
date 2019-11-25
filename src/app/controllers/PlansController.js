@@ -32,7 +32,6 @@ class PlansController {
 
   async update(req, res) {
     const schema = Yup.object().shape({
-      id: Yup.number().required(),
       title: Yup.string(),
       duration: Yup.number(),
       price: Yup.number(),
@@ -42,17 +41,37 @@ class PlansController {
       return res.status(401).json({ error: 'Validation fails.' });
     }
 
-    const { id } = req.body;
+    const { id } = req.params;
     const plan = await Plans.findByPk(id);
+
+    if (!plan) {
+      return res.status(400).json({ error: 'This plan does not exists' });
+    }
 
     const { title, duration, price } = await plan.update(req.body);
 
     return res.json({
-      id,
       title,
       duration,
       price,
     });
+  }
+
+  async delete(req, res) {
+    const { id } = req.params;
+    const plan = await Plans.findByPk(id);
+
+    if (!plan) {
+      return res.status(400).json({ error: 'This plan does not exists.' });
+    }
+
+    await plan.destroy();
+
+    const plans = await Plans.findAll({
+      attributes: ['id', 'title', 'duration', 'price'],
+    });
+
+    return res.json(plans);
   }
 }
 
