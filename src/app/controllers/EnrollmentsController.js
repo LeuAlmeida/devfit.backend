@@ -88,6 +88,18 @@ class EnrollmentsController {
       totalPrice,
     });
   }
+
+  async update(req, res) {
+    const { id } = req.params;
+
+    const { student_id, plan_id } = req.body;
+
+    return res.json({
+      id,
+      student_id,
+      plan_id,
+    });
+  }
 }
 
 export default new EnrollmentsController();
