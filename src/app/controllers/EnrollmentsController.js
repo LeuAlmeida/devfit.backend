@@ -92,12 +92,28 @@ class EnrollmentsController {
   async update(req, res) {
     const { id } = req.params;
 
-    const { student_id, plan_id } = req.body;
+    const { plan_id } = req.body;
+
+    const plan = await Plan.findByPk(plan_id, {
+      attributes: ['title', 'duration', 'price'],
+    });
+
+    const enrollment = await Enrollment.findOne({
+      where: { student_id: id },
+    });
+
+    const { start_date, end_date, price, student_id } = enrollment;
+
+    // await enrollment.update({
+    //   plan_id,
+    // });
 
     return res.json({
-      id,
+      start_date,
+      end_date,
+      price,
       student_id,
-      plan_id,
+      plan,
     });
   }
 }
