@@ -12,7 +12,7 @@
 
 Step 1:
 
-[ ] Plan Management **(Check after finish everything)**
+[X] Plan Management **(Check after finish everything)**
 
 Allow the user to register student enrollment plans, the plan must have the following fields:
 
@@ -30,7 +30,7 @@ Table `plans`
 
 [X] Diamond: 6 Months plan (R$89)
 
-[ ] CRUD to manage plans
+[X] CRUD to manage plans
 
 Step 2:
 
