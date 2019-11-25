@@ -1,4 +1,5 @@
-import { addMonths, parseISO } from 'date-fns';
+import { addMonths, parseISO, format } from 'date-fns';
+import pt from 'date-fns/locale/pt';
 import * as Yup from 'yup';
 
 import Enrollment from '../models/Enrollment';
@@ -71,6 +72,8 @@ class EnrollmentsController {
       price: totalPrice,
     });
 
+    const startParse = parseISO(start_date);
+
     await Mail.sendMail({
       to: `${student.name} <${student.email}>`,
       subject: 'Sua matrícula na DevFit',
@@ -80,6 +83,9 @@ class EnrollmentsController {
         planTitle: plan.title,
         planDuration: plan.duration,
         planPrice: plan.price,
+        planStart: format(startParse, "dd' de 'MMMM' de 'yyyy", { locale: pt }),
+        planEnd: format(end_date, "dd' de 'MMMM' de 'yyyy", { locale: pt }),
+        monthlyDuration: plan.duration > 1 ? 'meses' : 'mês',
       },
     });
 
