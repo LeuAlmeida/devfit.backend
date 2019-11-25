@@ -81,8 +81,8 @@ class EnrollmentsController {
     });
 
     return res.json({
-      student,
-      plan,
+      student_id,
+      plan_id,
       start_date,
       end_date,
       totalPrice,
@@ -91,30 +91,46 @@ class EnrollmentsController {
 
   async update(req, res) {
     const { id } = req.params;
+    const { start_date } = req.body;
 
-    const { plan_id } = req.body;
-
-    const plan = await Plan.findByPk(plan_id, {
-      attributes: ['title', 'duration', 'price'],
-    });
+    /**
+     * Find an exists enrollment
+     */
 
     const enrollment = await Enrollment.findOne({
       where: { student_id: id },
     });
 
-    const { start_date, end_date, price, student_id } = enrollment;
+    if (!enrollment) {
+      return res.status(400).json({ error: 'Enrollment does not exists.' });
+    }
 
-    // await enrollment.update({
-    //   plan_id,
-    // });
+    /**
+     * Find the plan references
+     */
 
-    return res.json({
+    const { plan_id } = req.body;
+
+    const plan = await Plan.findOne({
+      where: {
+        id: plan_id,
+      },
+    });
+
+    const { duration } = plan;
+
+    /**
+     * Calc the end date
+     */
+    const end_date = addMonths(parseISO(start_date), duration);
+
+    await enrollment.update({
+      plan_id,
       start_date,
       end_date,
-      price,
-      student_id,
-      plan,
     });
+
+    return res.json(enrollment);
   }
 }
 
