@@ -81,7 +81,7 @@ The student can be only 5 checkins between a 7 days periods
 
 Create a route to list all checkins performed by a user based on their registration ID;
 
-[ ] GET Route *(Example: https://gympoint.com/students/3/checkins)*
+[X] GET Route *(Example: https://gympoint.com/students/3/checkins)*
 
 Step 2:
 
