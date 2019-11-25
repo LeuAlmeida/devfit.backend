@@ -6,14 +6,16 @@ class StudentController {
   async store(req, res) {
     const schema = Yup.object().shape({
       name: Yup.string().required(),
-      email: Yup.string().email().required(),
+      email: Yup.string()
+        .email()
+        .required(),
       age: Yup.number().required(),
       weight: Yup.number().required(),
       height: Yup.number().required(),
-    })
+    });
 
     if (!(await schema.isValid(req.body))) {
-      return res.status(400).json({ error: 'Validation fails.' })
+      return res.status(400).json({ error: 'Validation fails.' });
     }
 
     const studentExists = await Student.findOne({
@@ -45,10 +47,10 @@ class StudentController {
       age: Yup.number(),
       weight: Yup.number(),
       height: Yup.number(),
-    })
+    });
 
     if (!(await schema.isValid(req.body))) {
-      return res.status(400).json({ error: 'Validation fails.' })
+      return res.status(400).json({ error: 'Validation fails.' });
     }
 
     const { email, id } = req.body;
@@ -70,10 +72,9 @@ class StudentController {
       email,
       age,
       weight,
-      height
+      height,
     });
   }
-
 }
 
 export default new StudentController();
