@@ -20,7 +20,7 @@ routes.post('/students', StudentController.store);
 routes.put('/students', StudentController.update);
 
 routes.post('/plans', PlansController.store);
-routes.put('/plans', PlansController.update);
-routes.delete('/plans', PlansController.delete);
+routes.put('/plans/:id', PlansController.update);
+routes.delete('/plans/:id', PlansController.delete);
 
 export default routes;
