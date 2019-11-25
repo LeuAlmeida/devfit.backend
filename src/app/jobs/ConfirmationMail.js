@@ -1,7 +1,6 @@
-import { parseISO } from 'date-fns';
+import { format, parseISO } from 'date-fns';
+import pt from 'date-fns/locale/pt';
 import Mail from '../../lib/Mail';
-
-import formatDate from '../utils/formatDate';
 
 class ConfirmationMail {
   get key() {
@@ -23,8 +22,12 @@ class ConfirmationMail {
         planTitle: plan.title,
         planDuration: plan.duration,
         planPrice: plan.price,
-        planStart: formatDate(startParse),
-        planEnd: formatDate(endParse),
+        planStart: format(startParse, "dd' de 'MMMM' de 'yyyy", {
+          locale: pt,
+        }),
+        planEnd: format(endParse, "dd' de 'MMMM' de 'yyyy", {
+          locale: pt,
+        }),
         monthlyDuration: plan.duration > 1 ? 'meses' : 'mês',
       },
     });
