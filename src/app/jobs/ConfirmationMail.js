@@ -1,4 +1,4 @@
-import { format } from 'date-fns';
+import { format, parseISO } from 'date-fns';
 import pt from 'date-fns/locale/pt';
 import Mail from '../../lib/Mail';
 
@@ -8,24 +8,27 @@ class ConfirmationMail {
   }
 
   async handle({ data }) {
-    const { enrollment } = data;
+    const { student, plan, end_date, start_date } = data;
+
+    const startParse = parseISO(start_date);
+    const endParse = parseISO(end_date);
 
     await Mail.sendMail({
-      to: `${enrollment.student.name} <${enrollment.student.email}>`,
+      to: `${student.name} <${student.email}>`,
       subject: 'Sua matrícula na DevFit',
       template: 'enrollmentConfirmation',
       context: {
-        studentName: enrollment.student.name,
-        planTitle: enrollment.plan.title,
-        planDuration: enrollment.plan.duration,
-        planPrice: enrollment.plan.price,
-        planStart: format(enrollment.startParse, "dd' de 'MMMM' de 'yyyy", {
+        studentName: student.name,
+        planTitle: plan.title,
+        planDuration: plan.duration,
+        planPrice: plan.price,
+        planStart: format(startParse, "dd' de 'MMMM' de 'yyyy", {
           locale: pt,
         }),
-        planEnd: format(enrollment.end_date, "dd' de 'MMMM' de 'yyyy", {
+        planEnd: format(endParse, "dd' de 'MMMM' de 'yyyy", {
           locale: pt,
         }),
-        monthlyDuration: enrollment.plan.duration > 1 ? 'meses' : 'mês',
+        monthlyDuration: plan.duration > 1 ? 'meses' : 'mês',
       },
     });
   }
