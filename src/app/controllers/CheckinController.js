@@ -48,7 +48,7 @@ class CheckinController {
     if (limitCheckin.length === 5) {
       return res
         .status(400)
-        .json({ error: 'The student has exceeded the limit of 5 checkins.' });
+        .json({ error: 'This student has exceeded the limit of 5 checkins.' });
     }
 
     const compareDate = formatDate(new Date());
@@ -58,7 +58,9 @@ class CheckinController {
     );
 
     if (checkinDay) {
-      return res.status(400).json({ error: 'Student already check in' });
+      return res
+        .status(400)
+        .json({ error: 'This student already checked in today.' });
     }
 
     const createCheckin = await Checkin.create({
@@ -66,6 +68,10 @@ class CheckinController {
     });
 
     return res.json(createCheckin);
+  }
+
+  async index(req, res) {
+    return res.json();
   }
 }
 
