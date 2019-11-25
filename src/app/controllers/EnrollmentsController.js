@@ -24,10 +24,9 @@ class EnrollmentsController {
       return res.status(400).json({ error: 'This plan does not exists.' });
     }
 
-    const { price } = plan;
+    const { price, duration } = plan;
 
-    // Need to fix
-    const { end_date } = req.body;
+    const end_date = addMonths(parseISO(start_date), duration);
 
     await Enrollments.create({
       student_id,
@@ -38,7 +37,7 @@ class EnrollmentsController {
     });
 
     return res.json({
-      student_id,
+      student,
       plan_id,
       start_date,
       end_date,
