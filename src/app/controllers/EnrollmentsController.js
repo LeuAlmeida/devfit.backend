@@ -90,6 +90,15 @@ class EnrollmentsController {
   }
 
   async update(req, res) {
+    const schema = Yup.object().shape({
+      plan_id: Yup.number(),
+      start_date: Yup.date(),
+    });
+
+    if (!schema) {
+      return res.status(401).json({ error: 'Validation fails.' });
+    }
+
     const { id } = req.params;
     const { start_date } = req.body;
 
@@ -134,6 +143,29 @@ class EnrollmentsController {
   }
 
   async index(req, res) {
+    const enrollments = await Enrollment.findAll({
+      attributes: [
+        'id',
+        'start_date',
+        'end_date',
+        'price',
+        'student_id',
+        'plan_id',
+      ],
+    });
+
+    return res.json(enrollments);
+  }
+
+  async delete(req, res) {
+    const { id } = req.params;
+
+    const enrollment = await Enrollment.findOne({
+      where: { id },
+    });
+
+    await enrollment.destroy();
+
     const enrollments = await Enrollment.findAll({
       attributes: [
         'id',
