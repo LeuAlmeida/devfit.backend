@@ -132,6 +132,21 @@ class EnrollmentsController {
 
     return res.json(enrollment);
   }
+
+  async index(req, res) {
+    const enrollments = await Enrollment.findAll({
+      attributes: [
+        'id',
+        'start_date',
+        'end_date',
+        'price',
+        'student_id',
+        'plan_id',
+      ],
+    });
+
+    return res.json(enrollments);
+  }
 }
 
 export default new EnrollmentsController();
