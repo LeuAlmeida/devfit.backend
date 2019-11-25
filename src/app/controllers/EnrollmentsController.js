@@ -1,7 +1,7 @@
 import { addMonths, parseISO } from 'date-fns';
 
-import Enrollments from '../models/Enrollments';
-import Plans from '../models/Plans';
+import Enrollment from '../models/Enrollment';
+import Plan from '../models/Plan';
 import Student from '../models/Student';
 
 class EnrollmentsController {
@@ -18,7 +18,7 @@ class EnrollmentsController {
     }
 
     // Search for an exist plan
-    const plan = await Plans.findByPk(plan_id);
+    const plan = await Plan.findByPk(plan_id);
 
     if (!plan) {
       return res.status(400).json({ error: 'This plan does not exists.' });
@@ -28,7 +28,7 @@ class EnrollmentsController {
 
     const end_date = addMonths(parseISO(start_date), duration);
 
-    await Enrollments.create({
+    await Enrollment.create({
       student_id,
       plan_id,
       start_date,

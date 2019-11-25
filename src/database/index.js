@@ -2,12 +2,12 @@ import Sequelize from 'sequelize';
 
 import User from '../app/models/User';
 import Student from '../app/models/Student';
-import Plans from '../app/models/Plans';
-import Enrollments from '../app/models/Enrollments';
+import Plan from '../app/models/Plan';
+import Enrollment from '../app/models/Enrollment';
 
 import databaseConfig from '../config/database';
 
-const models = [User, Student, Plans, Enrollments];
+const models = [User, Student, Plan, Enrollment];
 
 class Database {
   constructor() {

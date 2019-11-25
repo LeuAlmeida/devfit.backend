@@ -1,5 +1,5 @@
 import * as Yup from 'yup';
-import Plans from '../models/Plans';
+import Plan from '../models/Plan';
 
 class PlansController {
   async store(req, res) {
@@ -13,7 +13,7 @@ class PlansController {
       return res.status(401).json({ error: 'Validation fails.' });
     }
 
-    const planDurationExists = await Plans.findOne({
+    const planDurationExists = await Plan.findOne({
       where: { duration: req.body.duration },
     });
 
@@ -21,7 +21,7 @@ class PlansController {
       return res.status(400).json({ error: 'This plan already exists.' });
     }
 
-    const { title, duration, price } = await Plans.create(req.body);
+    const { title, duration, price } = await Plan.create(req.body);
 
     return res.json({
       title,
@@ -42,7 +42,7 @@ class PlansController {
     }
 
     const { id } = req.params;
-    const plan = await Plans.findByPk(id);
+    const plan = await Plan.findByPk(id);
 
     if (!plan) {
       return res.status(400).json({ error: 'This plan does not exists' });
@@ -59,7 +59,7 @@ class PlansController {
 
   async delete(req, res) {
     const { id } = req.params;
-    const plan = await Plans.findByPk(id);
+    const plan = await Plan.findByPk(id);
 
     if (!plan) {
       return res.status(400).json({ error: 'This plan does not exists.' });
@@ -67,7 +67,7 @@ class PlansController {
 
     await plan.destroy();
 
-    const plans = await Plans.findAll({
+    const plans = await Plan.findAll({
       attributes: ['id', 'title', 'duration', 'price'],
     });
 
@@ -75,7 +75,7 @@ class PlansController {
   }
 
   async index(req, res) {
-    const plans = await Plans.findAll({
+    const plans = await Plan.findAll({
       attributes: ['id', 'title', 'duration', 'price'],
     });
 
