@@ -22,11 +22,17 @@ class CheckinController {
       where: { student_id: req.params.id },
     });
 
+    /**
+     * Define days of weeks
+     */
     const dayOfWeek = eachDayOfInterval({
       start: startOfWeek(new Date().getTime(), { weekStartsOn: 1 }),
       end: startOfWeek(addDays(new Date().getTime(), 6)),
     });
 
+    /**
+     * Define limit of checkins
+     */
     const limitCheckin = dayOfWeek
       .map(day => {
         const listDay = formatDate(day);
