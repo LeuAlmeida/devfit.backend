@@ -16,7 +16,7 @@ routes.post('/sessions', SessionController.store);
 
 routes.get('/plans', PlansController.index);
 
-routes.post('/checkin/:id', CheckinController.store);
+routes.post('/students/:id/checkins', CheckinController.store);
 
 routes.use(authMiddleware);
 
