@@ -34,7 +34,7 @@ Table `plans`
 
 Step 2:
 
-[ ] Enrollment Management **(Check after finish everything)**
+[X] Enrollment Management **(Check after finish everything)**
 Although the student is registered on the platform, this does not mean that the student has an active registration and can access the gym.
 
 Table `enrollments`
@@ -56,7 +56,7 @@ Data de início informada: `23/05/2019` Plano selecionado: `Gold (3 meses)` Data
 
 When a student enrolls, they receive an email with details of their enrollment at the academy such as plan, end date, value, and a welcome message.
 
-[ ] CRUD to manage enrollments
+[X] CRUD to manage enrollments
 
 [X] Increment auth middleware to this step
 
