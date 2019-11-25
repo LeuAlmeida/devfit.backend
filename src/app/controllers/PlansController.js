@@ -73,6 +73,10 @@ class PlansController {
 
     return res.json(plans);
   }
+
+  async index(req, res) {
+    return res.json();
+  }
 }
 
 export default new PlansController();
