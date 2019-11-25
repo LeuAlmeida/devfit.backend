@@ -18,7 +18,9 @@ class PlansController {
     });
 
     if (planDurationExists) {
-      return res.status(400).json({ error: 'This plan already exists.' });
+      return res
+        .status(400)
+        .json({ error: 'A plan with this duration already exists.' });
     }
 
     const { title, duration, price } = await Plan.create(req.body);
