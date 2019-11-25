@@ -1,4 +1,5 @@
 import { addMonths, parseISO } from 'date-fns';
+import * as Yup from 'yup';
 
 import Enrollment from '../models/Enrollment';
 import Plan from '../models/Plan';
@@ -6,6 +7,16 @@ import Student from '../models/Student';
 
 class EnrollmentsController {
   async store(req, res) {
+    const schema = Yup.object().shape({
+      student_id: Yup.number().required(),
+      plan_id: Yup.number().required(),
+      start_date: Yup.date().required(),
+    });
+
+    if (!(await schema.isValid(req.body))) {
+      return res.status(401).json({ error: 'Validation fails.' });
+    }
+
     const { student_id, plan_id, start_date } = req.body;
 
     // Search for an exist student
