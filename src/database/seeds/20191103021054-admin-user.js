@@ -10,7 +10,7 @@ module.exports = {
           email: 'admin@gympoint.com',
           password_hash: bcrypt.hashSync('admin', 5),
           created_at: new Date(),
-          updatLoed_at: new Date(),
+          updated_at: new Date(),
         },
         {
           name: 'Leonardo Almeida',
