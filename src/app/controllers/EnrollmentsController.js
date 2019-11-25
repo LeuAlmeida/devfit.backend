@@ -1,12 +1,12 @@
-import { addMonths, parseISO, format } from 'date-fns';
-import pt from 'date-fns/locale/pt';
+import { addMonths, parseISO } from 'date-fns';
 import * as Yup from 'yup';
 
 import Enrollment from '../models/Enrollment';
 import Plan from '../models/Plan';
 import Student from '../models/Student';
 
-import Mail from '../../lib/Mail';
+import ConfirmationMail from '../jobs/ConfirmationMail';
+import Queue from '../../lib/Queue';
 
 class EnrollmentsController {
   async store(req, res) {
@@ -72,26 +72,17 @@ class EnrollmentsController {
       price: totalPrice,
     });
 
-    const startParse = parseISO(start_date);
-
-    await Mail.sendMail({
-      to: `${student.name} <${student.email}>`,
-      subject: 'Sua matrícula na DevFit',
-      template: 'enrollmentConfirmation',
-      context: {
-        studentName: student.name,
-        planTitle: plan.title,
-        planDuration: plan.duration,
-        planPrice: plan.price,
-        planStart: format(startParse, "dd' de 'MMMM' de 'yyyy", { locale: pt }),
-        planEnd: format(end_date, "dd' de 'MMMM' de 'yyyy", { locale: pt }),
-        monthlyDuration: plan.duration > 1 ? 'meses' : 'mês',
-      },
+    await Queue.add(ConfirmationMail.key, {
+      student,
+      plan,
+      start_date,
+      end_date,
+      totalPrice,
     });
 
     return res.json({
       student,
-      plan_id,
+      plan,
       start_date,
       end_date,
       totalPrice,
