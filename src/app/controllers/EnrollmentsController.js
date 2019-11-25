@@ -1,3 +1,5 @@
+import { addMonths, parseISO } from 'date-fns';
+
 import Enrollments from '../models/Enrollments';
 import Plans from '../models/Plans';
 import Student from '../models/Student';
@@ -27,24 +29,22 @@ class EnrollmentsController {
     // Need to fix
     const { end_date } = req.body;
 
-    const enrollment = await Enrollments.create({
-      student,
-      plan,
+    await Enrollments.create({
+      student_id,
+      plan_id,
       start_date,
       end_date,
       price,
     });
 
-    return res.json(enrollment);
+    return res.json({
+      student_id,
+      plan_id,
+      start_date,
+      end_date,
+      price,
+    });
   }
 }
 
 export default new EnrollmentsController();
-
-/**
- * [X] student_id
- * [X] plan_id
- * [X] start_date
- * [X] end_date
- * [X] price
- */
