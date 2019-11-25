@@ -19,7 +19,10 @@ class EnrollmentsController {
 
     const { student_id, plan_id, start_date } = req.body;
 
-    // Search for an exist student
+    /**
+     * Search for an exist student
+     */
+
     const student = await Student.findByPk(student_id);
 
     if (!student) {
@@ -28,31 +31,50 @@ class EnrollmentsController {
         .json({ error: 'Student does not exists in our database.' });
     }
 
-    // Search for an exist plan
+    /**
+     * Search for an exist plan
+     */
+
     const plan = await Plan.findByPk(plan_id);
 
     if (!plan) {
       return res.status(400).json({ error: 'This plan does not exists.' });
     }
 
+    /**
+     * Search for relation of plan and id
+     */
+
+    const studentEnrolled = await Enrollment.findOne({
+      where: {
+        student_id,
+      },
+    });
+
+    if (studentEnrolled) {
+      return res.status(401).json({ error: 'Student already is enrolled. ' });
+    }
+
     const { price, duration } = plan;
 
     const end_date = addMonths(parseISO(start_date), duration);
+
+    const totalPrice = price * duration;
 
     await Enrollment.create({
       student_id,
       plan_id,
       start_date,
       end_date,
-      price,
+      price: totalPrice,
     });
 
     return res.json({
       student,
-      plan,
+      plan_id,
       start_date,
       end_date,
-      price,
+      totalPrice,
     });
   }
 }
