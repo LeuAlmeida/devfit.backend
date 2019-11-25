@@ -38,7 +38,7 @@ class EnrollmentsController {
 
     return res.json({
       student,
-      plan_id,
+      plan,
       start_date,
       end_date,
       price,
