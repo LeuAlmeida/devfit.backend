@@ -5,6 +5,8 @@ import Enrollment from '../models/Enrollment';
 import Plan from '../models/Plan';
 import Student from '../models/Student';
 
+import Mail from '../../lib/Mail';
+
 class EnrollmentsController {
   async store(req, res) {
     const schema = Yup.object().shape({
@@ -67,6 +69,12 @@ class EnrollmentsController {
       start_date,
       end_date,
       price: totalPrice,
+    });
+
+    await Mail.sendMail({
+      to: `${student.name} <${student.email}>`,
+      subject: 'Sua matrícula na DevFit',
+      text: 'Você se matriculou com sucesso',
     });
 
     return res.json({
