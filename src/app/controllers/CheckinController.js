@@ -43,7 +43,7 @@ class CheckinController {
 
         return checkDate;
       })
-      .filter(d => d != null);
+      .filter(checked => checked != null);
 
     if (limitCheckin.length === 5) {
       return res
@@ -54,7 +54,7 @@ class CheckinController {
     const compareDate = formatDate(new Date());
 
     const checkinDay = student.find(
-      c => formatDate(c.createdAt) === compareDate
+      check => formatDate(check.createdAt) === compareDate
     );
 
     if (checkinDay) {
