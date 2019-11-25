@@ -74,7 +74,13 @@ class EnrollmentsController {
     await Mail.sendMail({
       to: `${student.name} <${student.email}>`,
       subject: 'Sua matrícula na DevFit',
-      text: 'Você se matriculou com sucesso',
+      template: 'enrollmentConfirmation',
+      context: {
+        studentName: student.name,
+        planTitle: plan.title,
+        planDuration: plan.duration,
+        planPrice: plan.price,
+      },
     });
 
     return res.json({
