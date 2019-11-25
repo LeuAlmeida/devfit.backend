@@ -13,14 +13,14 @@ class PlansController {
       return res.status(401).json({ error: 'Validation fails.' });
     }
 
-    const planDurationExists = await Plan.findOne({
-      where: { duration: req.body.duration },
+    const planExists = await Plan.findOne({
+      where: { title: req.body.title },
     });
 
-    if (planDurationExists) {
+    if (planExists) {
       return res
         .status(400)
-        .json({ error: 'A plan with this duration already exists.' });
+        .json({ error: 'A plan with this name already exists.' });
     }
 
     const { title, duration, price } = await Plan.create(req.body);
