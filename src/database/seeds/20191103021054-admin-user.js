@@ -8,17 +8,17 @@ module.exports = {
         {
           name: 'Administrador',
           email: 'admin@gympoint.com',
-          password_hash: bcrypt.hashSync('123456', 8),
+          password_hash: bcrypt.hashSync('admin', 5),
           created_at: new Date(),
-          updated_at: new Date(),
+          updatLoed_at: new Date(),
         },
         {
           name: 'Leonardo Almeida',
           email: 'leo@webid.net.br',
-          password_hash: bcrypt.hashSync('12346578', 8),
+          password_hash: bcrypt.hashSync('admin', 5),
           created_at: new Date(),
           updated_at: new Date(),
-        }
+        },
       ],
       {}
     );
