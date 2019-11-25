@@ -64,7 +64,7 @@ When a student enrolls, they receive an email with details of their enrollment a
 
 Step 1:
 
-[ ] Checkins **(Check after finish everything)**
+[X] Checkins **(Check after finish everything)**
 
 Table `checkins`
 
