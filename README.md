@@ -77,7 +77,7 @@ This check-in serves to monitor how many times the user has attended the gym dur
 
 The student can be only 5 checkins between a 7 days periods
 
-[ ] POST Route *(Example: https://gympoint.com/students/3/checkins)*
+[X] POST Route *(Example: https://gympoint.com/students/3/checkins)*
 
 Create a route to list all checkins performed by a user based on their registration ID;
 
