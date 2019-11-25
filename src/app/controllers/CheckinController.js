@@ -1,9 +1,6 @@
-import { eachDayOfInterval, addDays, startOfWeek, isBefore } from 'date-fns';
+import { isBefore } from 'date-fns';
 
 import Checkin from '../models/Checkin';
-import Enrollment from '../models/Enrollment';
-
-import formatDate from '../utils/formatDate';
 
 class CheckinController {
   async store(req, res) {
