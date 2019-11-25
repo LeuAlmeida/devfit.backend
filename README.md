@@ -58,7 +58,7 @@ When a student enrolls, they receive an email with details of their enrollment a
 
 [ ] CRUD to manage enrollments
 
-[ ] Increment auth middleware to this step
+[X] Increment auth middleware to this step
 
 <h4>Student functions</h4>
 
