@@ -52,7 +52,7 @@ The **registration start date** must be chosen by the user.
 The **end date** and **registration** price should be calculated based on the selected plan, for example: <br/>
 Data de início informada: `23/05/2019` Plano selecionado: `Gold (3 meses)` Data de término calculada: `23/08/2019 (3 meses depois do início)` Preço calculado: `R$327`
 
-[ ] Welcome e-mail when a student enrolls
+[X] Welcome e-mail when a student enrolls
 
 When a student enrolls, they receive an email with details of their enrollment at the academy such as plan, end date, value, and a welcome message.
 
