@@ -1,4 +1,5 @@
-import { isBefore } from 'date-fns';
+import { isBefore, format } from 'date-fns';
+import pt from 'date-fns/locale/pt';
 
 import Checkin from '../models/Checkin';
 
@@ -17,10 +18,28 @@ class CheckinController {
         count++;
       }
     });
+
     if (count >= 5) {
-      res
-        .status(400)
-        .json({ error: 'No more than 5 checkins for the last 7 days' });
+      res.status(400).json({
+        error: 'This student has exceeded the limit of 5 checkins per week.',
+      });
+    }
+
+    const compareDate = format(new Date(), "dd' de 'MMMM' de 'yyyy", {
+      locale: pt,
+    });
+
+    const checkinToday = checkins.find(
+      check =>
+        format(check.createdAt, "dd' de 'MMMM' de 'yyyy", {
+          locale: pt,
+        }) === compareDate
+    );
+
+    if (checkinToday) {
+      return res.status(400).json({
+        error: 'This student has exceeded the limit of 5 checkins per day.',
+      });
     }
 
     const checkin = await Checkin.create({ student_id });
@@ -30,8 +49,15 @@ class CheckinController {
 
   async index(req, res) {
     const checkins = await Checkin.findAll({
-      student: req.params.id,
+      where: {
+        student_id: req.params.id,
+      },
     });
+
+    if (!checkins) {
+      return res.status(401).json({ error: 'User .' });
+    }
+
     return res.json(checkins);
   }
 }
