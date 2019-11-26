@@ -44,7 +44,13 @@ class HelpOrderController {
   async index(req, res) {
     const order = await HelpOrder.findAll({
       where: { student_id: req.params.id },
-      attributes: ['student_id', 'question', 'createdAt'],
+      attributes: [
+        'student_id',
+        'question',
+        'createdAt',
+        'answer',
+        'answer_at',
+      ],
     });
 
     if (!order) {
