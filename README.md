@@ -25,15 +25,15 @@ An API rest created with NodeJS by Léu Almeida with :yellow_heart: and :coffee:
 
 <h3>:heavy_check_mark: Stack</h3>
 
-| Dependencies      |Security and Prevent errors   |
-|-------------------|:----------------------------:|
-| Nodemon           |Bcrypt                        |
-| Bee-queue         |Dotenv                        |
-| Express Handlebars|Express-async-errors          |
-| Pg and pg-hstore  |JWT                           |
-| Sequelize         |Sentry                        |
-| Express Handlebars|Youch                         |
-|                   |Yup                           |
+|       Dependencies            |     Security and Prevent errors   |
+|-------------------------------|:---------------------------------:|
+|       Nodemon                 |     Bcrypt                        |
+|       Bee-queue               |     Dotenv                        |
+|       Express Handlebars      |     Express-async-errors          |
+|       Pg and pg-hstore        |     JWT                           |
+|       Sequelize               |     Sentry                        |
+|       Express Handlebars      |     Youch                         |
+|                               |     Yup                           |
 
 <h3>:white_check_mark: About the API</h3>
 
@@ -47,14 +47,37 @@ Functions general features that use SMTP to trigger e-mails are done through `no
 * Yarn >= 1.19.1
 * Docker >= 19.03.3
 
-**Docker run PostgreSQL on 5434 port**
-```js
-$ sudo docker run --name database -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres:11
+```console
+// Docker run PostgreSQL on 5434 port (change the <postgresname> and <password>)
+$ sudo docker run --name <postgresname> -e POSTGRES_PASSWORD=<password> -p 5432:5432 -d postgres:11
+
+// Docker run Redis on 5434 port (change the <redisname>)
+$ sudo docker run --name <redisname> -p 6378:6379 -d -t redis:alpine
+
+///////////////////////// DON'T FORGET TO CHANGE THE .ENV FILE ///////////////////////////
 ```
 
-**Docker run Redis on 5434 port**
-```js
-$ sudo docker run --name redisbarber -p 6378:6379 -d -t redis:alpine
+<h3>:arrows_counterclockwise: Running the application</h3>
+
+```console
+// Clone the project
+$ git clone https://github.com/LeuAlmeida/devfit.backend.git
+
+// Entering the folder
+$ cd devfit.backend
+
+// Installing the dependencies
+$ yarn
+```
+
+In the first terminal:
+```console
+$ yarn dev
+```
+
+In the second terminal:
+```console
+$ yarn queue
 ```
 
 <hr/>
