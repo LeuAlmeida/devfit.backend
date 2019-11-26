@@ -27,18 +27,12 @@ class HelpOrderController {
 
     const { question } = req.body;
 
-    const createdAt = new Date();
-
-    await HelpOrder.create({
+    const order = await HelpOrder.create({
       student_id,
       question,
     });
 
-    return res.json({
-      student_id,
-      question,
-      createdAt,
-    });
+    return res.json(order);
   }
 
   async index(req, res) {

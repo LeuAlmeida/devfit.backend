@@ -126,7 +126,9 @@ class EnrollmentsController {
       },
     });
 
-    const { duration } = plan;
+    const { duration, price } = plan;
+
+    const totalPrice = price * duration;
 
     /**
      * Calc the end date
@@ -137,6 +139,7 @@ class EnrollmentsController {
       plan_id,
       start_date,
       end_date,
+      price: totalPrice,
     });
 
     return res.json(enrollment);

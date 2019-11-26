@@ -32,14 +32,12 @@ class AnswerOrderController {
       answer,
     });
 
-    await order.update({
+    const answered = await order.update({
       answer,
       answer_at: new Date(),
     });
 
-    return res.json({
-      answer,
-    });
+    return res.json(answered);
   }
 
   async index(req, res) {
@@ -52,6 +50,10 @@ class AnswerOrderController {
       },
       attributes: ['id', 'student_id', 'question', 'answer', 'answer_at'],
     });
+
+    if (!order) {
+      return res.status(400).json({ error: 'No order found with this id.' });
+    }
 
     return res.json(order);
   }
