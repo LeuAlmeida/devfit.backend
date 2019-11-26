@@ -22,6 +22,7 @@ class AnswerOrderMail {
         yourQuestion: order.question,
         ourAnswer: answer,
         orderId: order.id,
+        url: process.env.APP_URL,
         answerDate: format(
           parseISO(order.answer_at),
           "dd' de 'MMMM' de 'yyyy",
