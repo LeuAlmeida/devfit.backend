@@ -85,7 +85,7 @@ Create a route to list all checkins performed by a user based on their registrat
 
 Step 2:
 
-[ ] Requests for Assistance **(Check after finish everything)**
+[X] Requests for Assistance **(Check after finish everything)**
 
 Table `help_orders`
 
@@ -96,7 +96,7 @@ Table `help_orders`
 * Created_at
 * Updated_at
 
-[ ] Create a route to list all requests without answers
+[X] Create a route to list all requests without answers
 
 [X] Create a route for the student to apply for help just by entering their registration ID (database ID); (Example: `POST https://gympoint.com/students/3/help-orders`)
 
@@ -104,7 +104,7 @@ Table `help_orders`
 
 [X] Create a route to the gym answer a request (Example: `POST https://gympoint.com/help-orders/1/answer`)
 
-[ ] Create a mail delivery to the student after a request be answered. This mail need to have the question and the answer.
+[X] Create a mail delivery to the student after a request be answered. This mail need to have the question and the answer.
 
 <hr/>
 
