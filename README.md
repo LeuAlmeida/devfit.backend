@@ -100,9 +100,9 @@ Table `help_orders`
 
 [X] Create a route for the student to apply for help just by entering their registration ID (database ID); (Example: `POST https://gympoint.com/students/3/help-orders`)
 
-[ ] Create a rout to list all requests from a single user (Example: `GET https://gympoint.com/students/3/help-orders`)
+[X] Create a rout to list all requests from a single user (Example: `GET https://gympoint.com/students/3/help-orders`)
 
-[ ] Create a rout to the gym answer a request (Example: `POST https://gympoint.com/help-orders/1/answer`)
+[X] Create a route to the gym answer a request (Example: `POST https://gympoint.com/help-orders/1/answer`)
 
 [ ] Create a mail delivery to the student after a request be answered. This mail need to have the question and the answer.
 
