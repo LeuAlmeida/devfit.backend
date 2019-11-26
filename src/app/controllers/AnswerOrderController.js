@@ -50,6 +50,7 @@ class AnswerOrderController {
           [Op.ne]: null,
         },
       },
+      attributes: ['id', 'student_id', 'question', 'answer', 'answer_at'],
     });
 
     return res.json(order);
