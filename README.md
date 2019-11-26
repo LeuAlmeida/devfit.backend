@@ -86,6 +86,11 @@ $ yarn queue
 :copyright: Logo design by <a href="https://www.behance.net/lucasrvr" target="_blank">Lucas Ribeiro</a>
 </p>
 
+<p align="center">
+<h4>Color Scheme</h4>
+#806600 | #FFDB4D | #FFCC00 | #827E65E | #CCA300
+</p>
+
 <h4 align="center">
 <a href="http://linkedin.com/in/leonardoalmeida99">Connect me in LinkedIn</a> | <a href="http://behance.net/almeida99">See my Behance</a> | <a href="https://leunardo.dev">Click here to go to my CV</a>
 </h4>
