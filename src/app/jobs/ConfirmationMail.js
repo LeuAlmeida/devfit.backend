@@ -1,6 +1,9 @@
 import { format, parseISO } from 'date-fns';
 import pt from 'date-fns/locale/pt';
+import { resolve } from 'path';
 import Mail from '../../lib/Mail';
+
+const folder = resolve(__dirname, '..', 'views', 'emails', 'images');
 
 class ConfirmationMail {
   get key() {
@@ -15,10 +18,13 @@ class ConfirmationMail {
       subject: 'Sua matrícula na DevFit',
       template: 'enrollmentConfirmation',
       context: {
-        studentName: student.name,
+        studentName: student.name.split(' ')[0],
         planTitle: plan.title,
         planDuration: plan.duration,
         planPrice: plan.price,
+        today: format(new Date(), "dd' de 'MMMM' de 'yyyy", {
+          locale: pt,
+        }),
         planStart: format(parseISO(start_date), "dd' de 'MMMM' de 'yyyy", {
           locale: pt,
         }),
@@ -27,6 +33,23 @@ class ConfirmationMail {
         }),
         monthlyDuration: plan.duration > 1 ? 'meses' : 'mês',
       },
+      attachments: [
+        {
+          filename: 'logo.png',
+          path: `${folder}/logo.png`,
+          cid: 'logo',
+        },
+        {
+          filename: 'element1.png',
+          path: `${folder}/element1.png`,
+          cid: 'element1',
+        },
+        {
+          filename: 'footer_image.png',
+          path: `${folder}/footer_image.png`,
+          cid: 'footer_image',
+        },
+      ],
     });
   }
 }
