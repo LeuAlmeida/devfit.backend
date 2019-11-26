@@ -1,3 +1,5 @@
+import { Op } from 'sequelize';
+
 import HelpOrder from '../models/HelpOrder';
 import Student from '../models/Student';
 
@@ -38,6 +40,19 @@ class AnswerOrderController {
     return res.json({
       answer,
     });
+  }
+
+  async index(req, res) {
+    const order = await HelpOrder.findOne({
+      where: {
+        id: req.params.id,
+        answer: {
+          [Op.ne]: null,
+        },
+      },
+    });
+
+    return res.json(order);
   }
 }
 
