@@ -16,9 +16,10 @@ class AnswerOrderMail {
       subject: 'Sua pergunta foi respondida',
       template: 'answerOrder',
       context: {
-        studentName: student.name,
+        studentName: student.name.split(' ')[0],
         yourQuestion: order.question,
         ourAnswer: answer,
+        orderId: order.id,
       },
     });
   }
