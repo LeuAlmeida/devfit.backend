@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img alt="Devfit" title="Devfit" src="readme/logo-black.png" width="200px" />
+  <img alt="Devfit" title="Devfit" src="src/app/views/emails/images/logo.png" />
 </h1>
 
 <h1 align="center">
