@@ -1,8 +1,6 @@
 import { parseISO, format } from 'date-fns';
 import pt from 'date-fns/locale/pt';
-
 import { resolve } from 'path';
-
 import Mail from '../../lib/Mail';
 
 const folder = resolve(__dirname, '..', 'views', 'emails', 'images');
