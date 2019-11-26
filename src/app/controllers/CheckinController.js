@@ -54,8 +54,10 @@ class CheckinController {
       },
     });
 
-    if (!checkins) {
-      return res.status(401).json({ error: 'User .' });
+    if (checkins <= 0) {
+      return res
+        .status(400)
+        .json({ error: 'No help orders found for this student.' });
     }
 
     return res.json(checkins);
