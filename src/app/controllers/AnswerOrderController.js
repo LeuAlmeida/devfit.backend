@@ -1,4 +1,8 @@
 import HelpOrder from '../models/HelpOrder';
+import Student from '../models/Student';
+
+import AnswerOrderMail from '../jobs/AnswerOrderMail';
+import Queue from '../../lib/Queue';
 
 class AnswerOrderController {
   async store(req, res) {
@@ -14,13 +18,25 @@ class AnswerOrderController {
 
     const { answer } = req.body;
 
-    const answerOrder = await order.update({
+    const student = await Student.findOne({
+      where: {
+        id: order.student_id,
+      },
+    });
+
+    await Queue.add(AnswerOrderMail.key, {
+      student,
+      order,
+      answer,
+    });
+
+    await order.update({
       answer,
       answer_at: new Date(),
     });
 
     return res.json({
-      answerOrder,
+      answer,
     });
   }
 }
