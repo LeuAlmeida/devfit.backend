@@ -98,7 +98,7 @@ Table `help_orders`
 
 [ ] Create a route to list all requests without answers
 
-[ ] Create a route for the student to apply for help just by entering their registration ID (database ID); (Example: `POST https://gympoint.com/students/3/help-orders`)
+[X] Create a route for the student to apply for help just by entering their registration ID (database ID); (Example: `POST https://gympoint.com/students/3/help-orders`)
 
 [ ] Create a rout to list all requests from a single user (Example: `GET https://gympoint.com/students/3/help-orders`)
 
