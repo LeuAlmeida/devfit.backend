@@ -24,8 +24,6 @@ routes.post('/students/:id/help_orders', HelpOrderController.store);
 
 routes.use(authMiddleware);
 
-routes.get('/students/help_orders', AllHelpOrderController.index);
-
 routes.get('/students/:id/checkins', CheckinController.index);
 
 routes.put('/users', UserController.update);
@@ -41,5 +39,8 @@ routes.post('/enrollments', EnrollmentsController.store);
 routes.put('/enrollments/:id', EnrollmentsController.update);
 routes.get('/enrollments', EnrollmentsController.index);
 routes.delete('/enrollments/:id', EnrollmentsController.delete);
+
+routes.get('/students/help_orders', AllHelpOrderController.index);
+routes.get('/students/:id/help_orders', HelpOrderController.index);
 
 export default routes;
