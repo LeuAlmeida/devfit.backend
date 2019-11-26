@@ -40,11 +40,28 @@ An API rest created with NodeJS by Léu Almeida with :yellow_heart: and :coffee:
 This API is based on Express for the overall structure, uses PostgreSQL for data storage, Redis for queue data control in conjunction with Bee-queue, and Sentry for error control and internal problem maintenance. <br/>
 Functions general features that use SMTP to trigger e-mails are done through `nodemailer` using `express-handlebars` and `nodemailer-express-handlebars` are kept in the <a href="https://github.com/LeuAlmeida/devfit.backend/tree/master/src/app/views/emails">src/app/views/emails</a> folder.
 
-<p align="center">
-:nail_care: Logo design by <a href="https://www.behance.net/lucasrvr" target="_blank">Lucas Ribeiro</a>
-</p>
+<h3>:electric_plug: Preparing the server</h3>
+
+**Requeriments:**
+* NodeJS >= 10.16.3
+* Yarn >= 1.19.1
+* Docker >= 19.03.3
+
+**Docker run PostgreSQL on 5434 port**
+```js
+$ sudo docker run --name database -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres:11
+```
+
+**Docker run Redis on 5434 port**
+```js
+$ sudo docker run --name redisbarber -p 6378:6379 -d -t redis:alpine
+```
 
 <hr/>
+
+<p align="center">
+:copyright: Logo design by <a href="https://www.behance.net/lucasrvr" target="_blank">Lucas Ribeiro</a>
+</p>
 
 <h4 align="center">
 <a href="http://linkedin.com/in/leonardoalmeida99">Connect me in LinkedIn</a> | <a href="http://behance.net/almeida99">See my Behance</a> | <a href="https://leunardo.dev">Click here to go to my CV</a>
