@@ -42,7 +42,18 @@ class HelpOrderController {
   }
 
   async index(req, res) {
-    return res.json();
+    const order = await HelpOrder.findAll({
+      where: { student_id: req.params.id },
+      attributes: ['student_id', 'question', 'createdAt'],
+    });
+
+    if (!order) {
+      return res
+        .status(400)
+        .json({ error: 'No help orders found for this student' });
+    }
+
+    return res.json(order);
   }
 }
 
