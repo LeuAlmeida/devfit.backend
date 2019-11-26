@@ -38,7 +38,7 @@ class CheckinController {
 
     if (checkinToday) {
       return res.status(400).json({
-        error: 'This student has exceeded the limit of 5 checkins per day.',
+        error: 'This student has exceeded the limit of 1 checkins per day.',
       });
     }
 
