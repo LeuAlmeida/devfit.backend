@@ -49,7 +49,7 @@ class CheckinController {
     if (checkins <= 0) {
       return res
         .status(400)
-        .json({ error: 'No help orders found for this student.' });
+        .json({ error: 'No checkins found for this student.' });
     }
 
     return res.json(checkins);
