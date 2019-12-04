@@ -1,5 +1,4 @@
-import { isBefore, format } from 'date-fns';
-import pt from 'date-fns/locale/pt';
+import { isBefore, startOfWeek, isToday } from 'date-fns';
 
 import Checkin from '../models/Checkin';
 
@@ -8,33 +7,26 @@ class CheckinController {
     const student_id = req.params.id;
 
     const today = new Date();
-    today.setDate(today.getDate() - 7);
+    const thisWeek = startOfWeek(today);
 
     const checkins = await Checkin.findAll({ where: { student_id } });
 
-    let count = 0;
+    let countCheckins = 0;
+    let checkinToday = false;
     checkins.forEach(checkin => {
-      if (isBefore(today, checkin.createdAt)) {
-        count++;
+      if (isBefore(thisWeek, checkin.createdAt)) {
+        countCheckins++;
+      }
+      if (isToday(checkin.createdAt)) {
+        checkinToday = true;
       }
     });
 
-    if (count >= 5) {
+    if (countCheckins >= 5) {
       res.status(400).json({
         error: 'This student has exceeded the limit of 5 checkins per week.',
       });
     }
-
-    const compareDate = format(new Date(), "dd' de 'MMMM' de 'yyyy", {
-      locale: pt,
-    });
-
-    const checkinToday = checkins.find(
-      check =>
-        format(check.createdAt, "dd' de 'MMMM' de 'yyyy", {
-          locale: pt,
-        }) === compareDate
-    );
 
     if (checkinToday) {
       return res.status(400).json({
